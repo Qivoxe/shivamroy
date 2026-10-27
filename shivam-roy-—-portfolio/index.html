@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shivam Roy — Building Worlds. Modeling Markets.</title>
+    <meta name="description" content="Portfolio of Shivam Roy, mathematics student exploring quantitative finance, game development, and software engineering. Cinematic aesthetic inspired by Where Winds Meet." />
+    <meta property="og:title" content="Shivam Roy — Building Worlds. Modeling Markets." />
+    <meta property="og:description" content="Portfolio of Shivam Roy, mathematics student exploring quantitative finance, game development, and software engineering." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google Fonts for Editorial & Monograph Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Pure CSS3 Stylesheet -->
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <!-- Ambient Mist & Drifting Leaves Canvas Simulation -->
+    <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
+    <!-- =======================================================================
+         PERSISTENT FLOATING SOCIAL RAIL (EXTREME RIGHT OF VIEWPORT)
+         Configurable in src/script.js: PROFILE_CONFIG
+         Steam & Instagram real profile URLs
+         ======================================================================= -->
+    <aside class="floating-social-rail" aria-label="Social Profiles">
+      <!-- Steam Profile Button -->
+      <a 
+        class="social-rail-item" 
+        data-social="steam"
+        href="https://steamcommunity.com/id/404not_shivam" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        aria-label="Steam Profile (Opens in new window)"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <!-- Gamepad / Gaming controller icon -->
+          <path d="M7 6h10a6 6 0 0 1 6 6v3a4 4 0 0 1-6.9 2.74L14.5 16H9.5l-1.6 1.74A4 4 0 0 1 1 15v-3a6 6 0 0 1 6-6zm-1 5a1 1 0 0 0-1 1v1H4a1 1 0 1 0 0 2h1v1a1 1 0 1 0 2 0v-1h1a1 1 0 1 0 0-2H7v-1a1 1 0 0 0-1-1zm12.5 1.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-3 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+        </svg>
+        <span class="rail-tooltip">Steam</span>
+      </a>
+
+      <!-- Instagram Profile Button -->
+      <a 
+        class="social-rail-item" 
+        data-social="instagram"
+        href="https://instagram.com/404not_shivam" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        aria-label="Instagram Profile @404not_shivam (Opens in new window)"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+        <span class="rail-tooltip">@404not_shivam</span>
+      </a>
+    </aside>
+
+    <!-- =======================================================================
+         01. TOP NAVIGATION (STRICT 3-ZONE CONTRACT)
+         Zone 1: Brand Wordmark · Zone 2: 4 Clean Nav Links · Zone 3: 1 Primary CTA
+         ======================================================================= -->
+    <header class="top-nav" id="top-nav">
+      <div class="nav-container">
+        <!-- Zone 1: Brand Wordmark -->
+        <a href="#top" class="nav-brand" aria-label="Shivam Roy Homepage">
+          <span>shivam</span><span class="brand-mark">.</span>
+        </a>
+
+        <!-- Zone 2: Navigation Links -->
+        <nav>
+          <ul class="nav-menu" id="nav-menu">
+            <li><a href="#quant" class="nav-link">Quantitative Finance</a></li>
+            <li><a href="#games" class="nav-link">Game Development</a></li>
+            <li><a href="#interests" class="nav-link">Interests</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li class="mobile-cta-item">
+              <a href="#contact" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 0.5rem;">Initiate Contact &rarr;</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Zone 3: Primary Action & Mobile Toggle -->
+        <div class="nav-action">
+          <a href="#contact" class="btn-primary nav-desktop-cta">Initiate Contact</a>
+          <button class="nav-mobile-toggle" id="nav-mobile-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- =======================================================================
+           02. INTRODUCTION / HERO SECTION
+           Layered landscape imagery, subtle parallax, animated fog, elegant reveal
+           ======================================================================= -->
+      <section class="hero-section" aria-label="Introduction">
+        <div class="hero-backdrop" aria-hidden="true">
+          <img 
+            src="/src/assets/images/hero_misty_mountains_1793087096046.jpg" 
+            alt="Misty mountain ridges and ancient pavilion in Where Winds Meet aesthetic" 
+            class="hero-backdrop-image"
+            referrerpolicy="no-referrer"
+          />
+          <div class="hero-fog-overlay"></div>
+        </div>
+
+        <div class="hero-container">
+          <div class="hero-editorial reveal-init">
+            <span class="hero-kicker">Theoretical Mathematics &amp; Computational Systems</span>
+            <h1 class="hero-title">
+              Building worlds.<br />
+              <span class="vermilion-accent">Modeling markets.</span>
+            </h1>
+            <p class="hero-lead">
+              I am <strong>Shivam Roy</strong>, a mathematics student exploring 
+              quantitative finance, game development, and software engineering. 
+              My work spans optimal market-making mechanics, low-latency matching engines, 
+              and atmospheric survival systems.
+            </p>
+            <div class="hero-actions">
+              <a href="#quant" class="btn-primary">Explore Quant Research</a>
+              <a href="#games" class="btn-ghost">View Game Systems</a>
+            </div>
+
+            <!-- Quantitative Proof & Background Strip -->
+            <div class="hero-proof-strip">
+              <div class="proof-item">
+                <span class="proof-metric">BSc Math (Hons)</span>
+                <span class="proof-label">University of Delhi</span>
+              </div>
+              <div class="proof-item">
+                <span class="proof-metric">Avellaneda–Stoikov</span>
+                <span class="proof-label">Optimal Quote Control</span>
+              </div>
+              <div class="proof-item">
+                <span class="proof-metric">C++20 &amp; raylib</span>
+                <span class="proof-label">High-Performance Game Systems</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================================
+           03. QUANTITATIVE FINANCE PROJECTS
+           Research-style visuals, Avellaneda-Stoikov model, Causal Inference, LOB
+           ======================================================================= -->
+      <section class="section-wrapper" id="quant" aria-labelledby="quant-heading">
+        <header class="section-header reveal-init">
+          <span class="section-kicker">01. Stochastic Systems &amp; Market Microstructure</span>
+          <h2 class="section-title" id="quant-heading">Quantitative Finance Projects</h2>
+          <p class="section-description">
+            Applying probability theory, stochastic differential equations, and econometrics to 
+            model order book dynamics, inventory risk, and causal interventions.
+          </p>
+        </header>
+
+        <!-- Featured Project: Market-Making Simulator -->
+        <article class="quant-showcase-card reveal-init">
+          <div class="quant-split-grid">
+            <div class="quant-media-frame">
+              <img 
+                src="/src/assets/images/quant_market_making_1793087097452.jpg" 
+                alt="Mathematical visualization of limit order book geometry and optimal quote spreads" 
+                class="quant-media-image"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
+            </div>
+            <div class="quant-content-frame">
+              <div>
+                <div class="project-meta-clean">
+                  <span>Stochastic Control</span>
+                  <span class="sep">/</span>
+                  <span>Market Microstructure</span>
+                  <span class="sep">/</span>
+                  <span>Python &amp; C++</span>
+                </div>
+                <h3 class="project-heading">Market-Making Simulator (Avellaneda–Stoikov)</h3>
+                <p class="project-narrative">
+                  An algorithmic market-making simulation engine built on the classic Avellaneda–Stoikov framework. 
+                  Models high-frequency quoting strategies where an agent dynamically shifts bid and ask quotes 
+                  away from the mid-price to manage inventory risk under Poisson arrival intensity.
+                </p>
+
+                <!-- Rigorous Mathematical Monograph Block -->
+                <div class="math-monograph-block" aria-label="Avellaneda-Stoikov Formula Reference">
+                  <span class="math-formula">r(s, q, t) = s - q \cdot \gamma \cdot \sigma^2(T - t)</span>
+                  <span class="math-formula">\delta^a + \delta^b = \gamma \sigma^2(T - t) + \frac{2}{\gamma}\ln\left(1 + \frac{\gamma}{\kappa}\right)</span>
+                  <span class="math-legend">Reservation price shifts quotes asymmetrically to penalize excess inventory (q).</span>
+                </div>
+
+                <!-- Live Interactive Avellaneda-Stoikov Micro-Workbench -->
+                <div class="sim-workbench" aria-label="Interactive Avellaneda-Stoikov Quote Calculator">
+                  <div class="sim-header">
+                    <span class="sim-title">Live Parameter Simulation</span>
+                  </div>
+                  <div class="sim-controls-grid">
+                    <div class="control-field">
+                      <label class="control-label" for="sim-inventory">
+                        <span>Inventory (q)</span>
+                        <span id="val-inventory">0</span>
+                      </label>
+                      <input type="range" id="sim-inventory" class="control-slider" min="-5" max="5" value="0" step="1" />
+                    </div>
+                    <div class="control-field">
+                      <label class="control-label" for="sim-volatility">
+                        <span>Volatility (σ)</span>
+                        <span id="val-volatility">0.30</span>
+                      </label>
+                      <input type="range" id="sim-volatility" class="control-slider" min="0.1" max="1.0" value="0.30" step="0.05" />
+                    </div>
+                    <div class="control-field">
+                      <label class="control-label" for="sim-risk">
+                        <span>Risk Aversion (γ)</span>
+                        <span id="val-risk">0.10</span>
+                      </label>
+                      <input type="range" id="sim-risk" class="control-slider" min="0.02" max="0.40" value="0.10" step="0.02" />
+                    </div>
+                  </div>
+                  <canvas id="sim-quotes-canvas" height="70" aria-label="Visual order book representation"></canvas>
+                  <div class="sim-readout">
+                    <div class="readout-col">
+                      <span class="readout-tag">Reservation Price</span>
+                      <span class="readout-val" id="out-reservation">$100.00</span>
+                    </div>
+                    <div class="readout-col">
+                      <span class="readout-tag">Total Spread</span>
+                      <span class="readout-val" id="out-spread">$1.42</span>
+                    </div>
+                    <div class="readout-col">
+                      <span class="readout-tag">Bid / Ask Quote</span>
+                      <span class="readout-val highlight" id="out-quotes">99.29 / 100.71</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <a href="https://github.com/Qivoxe" target="_blank" rel="noopener noreferrer" class="project-link-clean" data-social="github">
+                  <span>Explore Repository on GitHub</span>
+                  <span aria-hidden="true">&rarr;</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Secondary Quant Projects Grid -->
+        <div class="projects-dual-grid">
+          <!-- Project 2: E-commerce Causal Inference Platform -->
+          <article class="project-card-refined reveal-init">
+            <div class="project-card-header">
+              <div class="project-meta-clean">
+                <span>Econometrics</span>
+                <span class="sep">/</span>
+                <span>Causal ML</span>
+                <span class="sep">/</span>
+                <span>Python</span>
+              </div>
+              <h3 class="project-card-title">E-commerce Causal Inference &amp; Experimentation</h3>
+            </div>
+            <p class="project-card-body">
+              A quasi-experimental econometric framework implementing Difference-in-Differences (DiD), 
+              Synthetic Controls, and CUPED variance reduction. Enables rigorous revenue attribution 
+              and counterfactual customer response modeling in noisy retail marketplaces.
+            </p>
+            <div class="project-card-footer">
+              <span class="project-meta-clean">Empirical Econometrics</span>
+              <a href="https://github.com/Qivoxe" target="_blank" rel="noopener noreferrer" class="project-link-clean" data-social="github">
+                <span>View Architecture</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 3: LOB Terminal -->
+          <article class="project-card-refined reveal-init">
+            <div class="project-card-header">
+              <div class="project-meta-clean">
+                <span>C++20</span>
+                <span class="sep">/</span>
+                <span>Data Structures</span>
+                <span class="sep">/</span>
+                <span>Low Latency</span>
+              </div>
+              <h3 class="project-card-title">LOB Terminal (Limit Order Book Engine)</h3>
+            </div>
+            <p class="project-card-body">
+              A high-throughput C++20 limit order book with strict price-time priority matching, 
+              contiguous memory order pools to minimize CPU cache misses, and deterministic benchmark 
+              harnesses achieving sub-microsecond insertion and cancellation latency.
+            </p>
+            <div class="project-card-footer">
+              <span class="project-meta-clean">Deterministic Matching</span>
+              <a href="https://github.com/Qivoxe" target="_blank" rel="noopener noreferrer" class="project-link-clean" data-social="github">
+                <span>Inspect Source</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- =======================================================================
+           04. GAME DEVELOPMENT PROJECTS
+           NOCT C++/raylib arcade-survival, Mechanics, Systems, Spatial Prototypes
+           ======================================================================= -->
+      <section class="section-wrapper" id="games" aria-labelledby="games-heading">
+        <header class="section-header reveal-init">
+          <span class="section-kicker">02. Interactive Systems &amp; Game Mechanics</span>
+          <h2 class="section-title" id="games-heading">Game Development Projects</h2>
+          <p class="section-description">
+            Designing deterministic gameplay loops, spatial partitioning grids, and immersive lighting 
+            systems using C++ and hardware-accelerated graphics libraries.
+          </p>
+        </header>
+
+        <!-- Featured Project: NOCT -->
+        <article class="game-featured-banner reveal-init">
+          <div class="game-banner-grid">
+            <div class="game-banner-media">
+              <img 
+                src="/src/assets/images/game_noct_concept_1793087097688.jpg" 
+                alt="NOCT concept artwork featuring wanderer with glowing lantern in misty ruins" 
+                class="game-banner-img"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
+            </div>
+            <div class="game-banner-content">
+              <div>
+                <div class="project-meta-clean">
+                  <span>C++</span>
+                  <span class="sep">/</span>
+                  <span>raylib</span>
+                  <span class="sep">/</span>
+                  <span>Arcade Survival</span>
+                </div>
+                <h3 class="project-heading">NOCT — Darkness Survival Mechanics</h3>
+                <p class="project-narrative">
+                  A high-intensity arcade-survival game prototype built in C++ using raylib. 
+                  Explores resource scarcity, spatial awareness, and visibility cones in a ruined 
+                  gothic landscape where entities only manifest beyond the threshold of lantern light.
+                </p>
+
+                <!-- Core Technical Pillars -->
+                <div class="game-pillars-list">
+                  <div class="pillar-item">
+                    <span class="pillar-dot"></span>
+                    <div>
+                      <h4 class="pillar-title">Dynamic Visibility Raycasting</h4>
+                      <p class="pillar-desc">2D radial segment casting calculating line-of-sight occlusion against ruined architecture in real-time.</p>
+                    </div>
+                  </div>
+                  <div class="pillar-item">
+                    <span class="pillar-dot"></span>
+                    <div>
+                      <h4 class="pillar-title">Spatial Hashing Entity Pool</h4>
+                      <p class="pillar-desc">Zero-heap entity allocation handling 1,000+ swarming shadow entities with contiguous array storage.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Interactive NOCT Mechanics Canvas Sandbox -->
+                <div class="game-mechanics-canvas-box">
+                  <div class="canvas-controls-bar">
+                    <span class="canvas-hint">Interactive Torch Cone: Move cursor or touch to direct lantern beam</span>
+                  </div>
+                  <canvas id="noct-preview-canvas" aria-label="Interactive NOCT lantern cone simulation"></canvas>
+                </div>
+              </div>
+
+              <div style="margin-top: 1.8rem;">
+                <a href="https://github.com/Qivoxe" target="_blank" rel="noopener noreferrer" class="project-link-clean" data-social="github">
+                  <span>View C++/raylib Source on GitHub</span>
+                  <span aria-hidden="true">&rarr;</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Secondary Game Systems Grid -->
+        <div class="projects-dual-grid">
+          <!-- Project 2: Kinematic Physics & Fluid Sandbox -->
+          <article class="project-card-refined reveal-init">
+            <div class="project-card-header">
+              <div class="project-meta-clean">
+                <span>C++ / OpenGL</span>
+                <span class="sep">/</span>
+                <span>Verlet Integration</span>
+              </div>
+              <h3 class="project-card-title">Verlet Kinematic Particle Sandbox</h3>
+            </div>
+            <p class="project-card-body">
+              An interactive 2D physics sandbox utilizing position-based dynamics and Verlet integration. 
+              Supports particle-based fluid approximation, cloth tear constraints, and elastic rope 
+              simulations with spatial cell broad-phase collision detection.
+            </p>
+            <div class="project-card-footer">
+              <span class="project-meta-clean">Physics Simulations</span>
+              <a href="https://github.com/Qivoxe" target="_blank" rel="noopener noreferrer" class="project-link-clean" data-social="github">
+                <span>Explore Engine</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 3: Procedural Dungeon Generator -->
+          <article class="project-card-refined reveal-init">
+            <div class="project-card-header">
+              <div class="project-meta-clean">
+                <span>Algorithms</span>
+                <span class="sep">/</span>
+                <span>BSP Trees</span>
+                <span class="sep">/</span>
+                <span>raylib</span>
+              </div>
+              <h3 class="project-card-title">Procedural BSP Ruin Generator</h3>
+            </div>
+            <p class="project-card-body">
+              A procedural room generation pipeline based on Binary Space Partitioning and Delaunay 
+              triangulation with minimum spanning tree hallway routing. Guarantees cyclic corridors, 
+              organic dead-ends, and coherent enemy encounter pacing.
+            </p>
+            <div class="project-card-footer">
+              <span class="project-meta-clean">Generative Level Design</span>
+              <a href="https://github.com/Qivoxe" target="_blank" rel="noopener noreferrer" class="project-link-clean" data-social="github">
+                <span>Inspect Algorithms</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- =======================================================================
+           05. HOBBIES AND PERSONAL INTERESTS
+           Editorial image-led gallery: Astronomy, Mountain trails, Open worlds
+           ======================================================================= -->
+      <section class="section-wrapper" id="interests" aria-labelledby="interests-heading">
+        <header class="section-header reveal-init">
+          <span class="section-kicker">03. Editorial Gallery</span>
+          <h2 class="section-title" id="interests-heading">Hobbies &amp; Personal Interests</h2>
+          <p class="section-description">
+            Beyond the rigor of mathematics and code: quiet nights beneath dark skies, 
+            highland mountain trails shrouded in mist, and open-world architectural exploration.
+          </p>
+        </header>
+
+        <div class="editorial-gallery-grid">
+          <!-- Gallery Item 1: Astronomy & Planetary Transits -->
+          <article 
+            class="gallery-editorial-card reveal-init" 
+            tabindex="0"
+            role="button"
+            aria-haspopup="dialog"
+            data-title="Astronomy &amp; Deep-Sky Observation"
+            data-text="Fascinated by planetary transit curves, exoplanet detection using NASA TESS data, and wide-field Milky Way astrophotography across high-altitude mountain terraces."
+            data-img="/src/assets/images/hobby_astronomy_nightsky_1793087098345.jpg"
+          >
+            <div class="gallery-image-wrapper">
+              <img 
+                src="/src/assets/images/hobby_astronomy_nightsky_1793087098345.jpg" 
+                alt="Radiant Milky Way core over jagged mountain peaks and an ancient armillary sphere" 
+                class="gallery-img"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
+              <div class="gallery-scrim"></div>
+            </div>
+            <div class="gallery-card-content">
+              <span class="gallery-chapter">Chapter 01 · The Cosmos</span>
+              <h3 class="gallery-title">Astronomy &amp; Celestial Observation</h3>
+              <p class="gallery-text">
+                Studying stellar photometric variations and the quiet vastness of dark-sky summits. 
+                Rooted in earlier work analyzing light curves for the ISRO hackathon exoplanet pipeline.
+              </p>
+            </div>
+          </article>
+
+          <!-- Gallery Item 2: Open-World Exploration & Mountain Trails -->
+          <article 
+            class="gallery-editorial-card reveal-init" 
+            tabindex="0"
+            role="button"
+            aria-haspopup="dialog"
+            data-title="Highland Wandering &amp; Open Worlds"
+            data-text="Solitary trekking through bamboo passes, misty highland gates, and exploring immersive open-world environments that balance natural wilderness with ancient structural geometry."
+            data-img="/src/assets/images/hobby_ancient_sanctuary_1793087099290.jpg"
+          >
+            <div class="gallery-image-wrapper">
+              <img 
+                src="/src/assets/images/hobby_ancient_sanctuary_1793087099290.jpg" 
+                alt="Winding stone stairway passing ancient wooden gates in a misty highland bamboo forest" 
+                class="gallery-img"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
+              <div class="gallery-scrim"></div>
+            </div>
+            <div class="gallery-card-content">
+              <span class="gallery-chapter">Chapter 02 · The Journey</span>
+              <h3 class="gallery-title">Open-World Exploration &amp; Mountain Trails</h3>
+              <p class="gallery-text">
+                Exploring misty alpine ridges and ancient architecture—drawing inspiration directly 
+                from atmospheric worlds like Where Winds Meet and real-world mountain solitude.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- =======================================================================
+           06. CONTACT SECTION & ACCESSIBLE FORM
+           Validation, accessible feedback, transparent endpoint instructions
+           ======================================================================= -->
+      <section class="section-wrapper" id="contact" aria-labelledby="contact-heading">
+        <header class="section-header reveal-init">
+          <span class="section-kicker">04. Inquiries &amp; Collaboration</span>
+          <h2 class="section-title" id="contact-heading">Get in Touch</h2>
+          <p class="section-description">
+            Whether discussing stochastic modeling, game engine architecture, or collaborative 
+            engineering opportunities, I welcome thoughtful correspondence.
+          </p>
+        </header>
+
+        <div class="contact-container-grid">
+          <!-- Direct Channels & Profile Card -->
+          <div class="contact-direct-card reveal-init">
+            <h3 class="contact-direct-title">Direct Inquiries</h3>
+            <p class="contact-direct-text">
+              Reach out directly through the verified channels below or use the form to transmit a direct brief.
+            </p>
+
+            <div class="contact-channels-list">
+              <a href="mailto:shivamray414@gmail.com" class="channel-link" data-social="email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <div class="channel-meta">
+                  <span class="channel-name">Primary Email</span>
+                  <span class="channel-value">shivamray414@gmail.com</span>
+                </div>
+              </a>
+
+              <a href="https://instagram.com/404not_shivam" target="_blank" rel="noopener noreferrer" class="channel-link" data-social="instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <div class="channel-meta">
+                  <span class="channel-name">Instagram Profile</span>
+                  <span class="channel-value">@404not_shivam</span>
+                </div>
+              </a>
+
+              <a href="https://steamcommunity.com/id/404not_shivam" target="_blank" rel="noopener noreferrer" class="channel-link" data-social="steam">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M7 6h10a6 6 0 0 1 6 6v3a4 4 0 0 1-6.9 2.74L14.5 16H9.5l-1.6 1.74A4 4 0 0 1 1 15v-3a6 6 0 0 1 6-6zm-1 5a1 1 0 0 0-1 1v1H4a1 1 0 1 0 0 2h1v1a1 1 0 1 0 2 0v-1h1a1 1 0 1 0 0-2H7v-1a1 1 0 0 0-1-1zm12.5 1.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-3 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                </svg>
+                <div class="channel-meta">
+                  <span class="channel-name">Steam Profile</span>
+                  <span class="channel-value">Steam Community</span>
+                </div>
+              </a>
+
+              <a href="https://github.com/Qivoxe" target="_blank" rel="noopener noreferrer" class="channel-link" data-social="github">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                <div class="channel-meta">
+                  <span class="channel-name">Code Repositories</span>
+                  <span class="channel-value">github.com/Qivoxe</span>
+                </div>
+              </a>
+            </div>
+
+            <!-- Transparent Form Endpoint Documentation -->
+            <div class="endpoint-config-box">
+              <strong>Form Backend Configuration:</strong>
+              <p style="margin-top: 0.4rem;">
+                This form validates in-browser and safely stores mock submissions. To forward real emails 
+                directly to your inbox, set your Formspree endpoint in <code>PROFILE_CONFIG.contactEndpoint</code> 
+                inside <code>src/script.js</code>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Accessible Contact Form -->
+          <div class="contact-form-panel reveal-init">
+            <form id="contact-form" class="contact-form" novalidate>
+              <!-- Field: Name -->
+              <div class="form-group">
+                <label for="contact-name" class="form-label">
+                  <span>Your Name</span>
+                  <span class="req" aria-hidden="true">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="contact-name" 
+                  name="name" 
+                  class="form-input" 
+                  placeholder="e.g. Elena Rostova" 
+                  required 
+                  aria-required="true"
+                  aria-describedby="name-error"
+                />
+                <span class="field-error-msg" id="name-error" role="alert"></span>
+              </div>
+
+              <!-- Field: Email -->
+              <div class="form-group">
+                <label for="contact-email" class="form-label">
+                  <span>Email Address</span>
+                  <span class="req" aria-hidden="true">*</span>
+                </label>
+                <input 
+                  type="email" 
+                  id="contact-email" 
+                  name="email" 
+                  class="form-input" 
+                  placeholder="name@domain.com" 
+                  required 
+                  aria-required="true"
+                  aria-describedby="email-error"
+                />
+                <span class="field-error-msg" id="email-error" role="alert"></span>
+              </div>
+
+              <!-- Field: Subject -->
+              <div class="form-group">
+                <label for="contact-subject" class="form-label">
+                  <span>Subject</span>
+                  <span class="req" aria-hidden="true">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="contact-subject" 
+                  name="subject" 
+                  class="form-input" 
+                  placeholder="e.g. Research Collaboration / Quant Systems" 
+                  required 
+                  aria-required="true"
+                  aria-describedby="subject-error"
+                />
+                <span class="field-error-msg" id="subject-error" role="alert"></span>
+              </div>
+
+              <!-- Field: Message -->
+              <div class="form-group">
+                <label for="contact-message" class="form-label">
+                  <span>Message</span>
+                  <span class="req" aria-hidden="true">*</span>
+                </label>
+                <textarea 
+                  id="contact-message" 
+                  name="message" 
+                  class="form-textarea" 
+                  placeholder="Outline your thoughts, research inquiry, or opportunity..." 
+                  required 
+                  aria-required="true"
+                  aria-describedby="message-error"
+                ></textarea>
+                <span class="field-error-msg" id="message-error" role="alert"></span>
+              </div>
+
+              <button type="submit" class="btn-primary" style="justify-content: center; width: 100%; padding: 0.85rem;">
+                <span>Send Message</span>
+                <span aria-hidden="true">&rarr;</span>
+              </button>
+
+              <div id="form-status-alert" class="form-status-alert" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- =======================================================================
+         07. EDITORIAL LIGHTBOX DIALOG
+         Accessible modal for viewing high-resolution gallery items
+         ======================================================================= -->
+    <div 
+      class="lightbox-overlay" 
+      id="hobbies-lightbox" 
+      role="dialog" 
+      aria-modal="true" 
+      aria-labelledby="lightbox-title" 
+      aria-describedby="lightbox-text"
+    >
+      <div class="lightbox-dialog">
+        <button class="lightbox-close-btn" id="lightbox-close-btn" aria-label="Close dialog">&times;</button>
+        <div class="lightbox-media">
+          <img src="" alt="" id="lightbox-img" class="lightbox-img-full" />
+        </div>
+        <div class="lightbox-info">
+          <h3 class="lightbox-caption-title" id="lightbox-title"></h3>
+          <p class="lightbox-caption-text" id="lightbox-text"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================================================
+         08. FOOTER
+         ======================================================================= -->
+    <footer class="footer-wrapper">
+      <div class="footer-container">
+        <div class="footer-copy">
+          <p>&copy; 2026 Shivam Roy. Built with HTML5, CSS3 &amp; Vanilla JavaScript.</p>
+          <p style="margin-top: 0.25rem; font-size: 0.78rem; color: var(--ivory-faint);">
+            Cinematic atmosphere inspired by Where Winds Meet. Designed for clarity and mathematical rigor.
+          </p>
+        </div>
+        <ul class="footer-links">
+          <li><a href="https://github.com/Qivoxe" target="_blank" rel="noopener noreferrer" class="footer-link" data-social="github">GitHub</a></li>
+          <li><a href="https://instagram.com/404not_shivam" target="_blank" rel="noopener noreferrer" class="footer-link" data-social="instagram">Instagram</a></li>
+          <li><a href="https://steamcommunity.com/id/404not_shivam" target="_blank" rel="noopener noreferrer" class="footer-link" data-social="steam">Steam</a></li>
+          <li><a href="mailto:shivamray414@gmail.com" class="footer-link" data-social="email">Email</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <!-- Pure Vanilla JS -->
+    <script type="module" src="/src/script.js"></script>
+  </body>
+</html>
