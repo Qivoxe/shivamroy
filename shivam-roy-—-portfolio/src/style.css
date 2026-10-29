@@ -59,6 +59,18 @@ html {
   color: var(--ivory-main);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.68;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  min-height: var(--dvh, 100vh);
+  background: radial-gradient(circle at 50% 0%, #132219 0%, var(--bg-deep) 65%);
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -98,6 +110,13 @@ button {
   border: none;
   color: inherit;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 /* --------------------------------------------------------------------------
@@ -108,7 +127,7 @@ button {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: var(--dvh, 100vh);
   pointer-events: none;
   z-index: 1;
   opacity: 0.75;
@@ -385,7 +404,7 @@ button {
    -------------------------------------------------------------------------- */
 .hero-section {
   position: relative;
-  min-height: calc(100vh - 74px);
+  min-height: calc(var(--dvh, 100vh) - 74px);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -1432,7 +1451,7 @@ button {
     top: 61px;
     left: 0;
     width: 100%;
-    height: calc(100vh - 61px);
+    height: calc(var(--dvh, 100vh) - 61px);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;

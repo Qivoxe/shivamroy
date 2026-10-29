@@ -34,6 +34,7 @@ window.PROFILE_CONFIG = PROFILE_CONFIG;
    01. INITIALIZATION & DOM BINDINGS
    ============================================================================= */
 document.addEventListener('DOMContentLoaded', () => {
+  initViewportHeight();
   initProfileLinks();
   initAmbientCanvas();
   initNavigation();
@@ -45,6 +46,16 @@ document.addEventListener('DOMContentLoaded', () => {
   initHobbiesLightbox();
   initContactForm();
 });
+
+function initViewportHeight() {
+  const setVH = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--dvh', `${vh}px`);
+  };
+  setVH();
+  window.addEventListener('resize', setVH, { passive: true });
+  window.addEventListener('orientationchange', setVH, { passive: true });
+}
 
 /* -----------------------------------------------------------------------------
    Sync Profile Links across DOM
